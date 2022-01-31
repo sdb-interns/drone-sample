@@ -1,0 +1,18 @@
+kind: pipeline
+type: docker
+name: default
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+  - name: build web image
+    image: plugins/docker
+    settings:
+      username: tetsu99
+      password:
+        from_secret: docker_password
+      repo: tetsu99/attendance-management
+      dockerfile: ./infra/docker/nginx/Dockerfile
+      tag: dummy
